@@ -1,7 +1,6 @@
 library(stringr)
 
-dat <- data.frame(var=c("ID",
-                        "Pathology",
+dat <- data.frame(var=c("Pathology",
                         "Histologic subtype",
                         "Maximum diameter of tumor",
                         "Tumor involvement",
@@ -16,7 +15,7 @@ dat <- data.frame(var=c("ID",
                         "max size",
                         "perinodal"), val='NA',stringsAsFactors = FALSE)
 
-df <- read.table(file = "p4.txt", fill = TRUE, sep=":", strip.white=TRUE,col.names=(1:4))
+df <- read.table(file = "p2.txt", fill = TRUE, sep=":", strip.white=TRUE,col.names=(1:4))
 df <- data.frame(lapply(df, gsub, pattern='\xa1\xde |- |"', replacement='', ignore.case=FALSE))
 names(df) = c("var","val","val2","val3")
 
@@ -31,9 +30,8 @@ for (i in 1:length(j)) {
   }
 }
 
-
-dat$val[2] <- path
-for (i in (3:5)) {
+dat$val[1] <- path
+for (i in (2:4)) {
   if (length(as.character(df$val[grep(dat$var[i], df$var, ignore.case = FALSE)])) == 0){
     next
   }
@@ -45,7 +43,11 @@ for (i in (3:5)) {
 l <- grep("Lymph node",df$var)
 
 # size, perinodal
-l2 <- str_split(df$val2[9],"[ ]")
+if (s_lp != 0) { 
+  lnpaths <- str_split(paste(df$val2[l],df$val3[l]),"r[ ]|[)][ ]|[ ]peri")
+  dat$val[13] <- lnpaths[[1]][2]
+  dat$val[14] <- lnpaths[[1]][3]
+}
 
 # location
 ln.df <- data.frame(str_split(df[l,1],","))
@@ -79,18 +81,18 @@ lnpath <- rbind(lnpath, c("ret-total", s_lr))
 lnpath.df <- data.frame(lnpath,stringsAsFactors = FALSE)
 names(lnpath.df) = c("loc","no")
 
-for (i in (6:13)) {
+for (i in (5:12)) {
   if (length(grep(dat$var[i], lnpath.df$loc)) == 0) {
     next
   }
   dat$val[i] <- lnpath.df$no[grep(dat$var[i], lnpath.df$loc)]
 }
 
-# size, perinodal
-if (s_lp != 0) {
-  lnpath2 <- str_split(paste(df$val2[8],df$val3[8]),"r[ ]|[)][ ]|[ ]peri")
-  dat$val[14] <- lnpath2[[1]][2]
-  dat$val[15] <- lnpath2[[1]][3]
-}
 
-# tbd
+
+### id ###
+id <- as.character(df$var[1])
+data.all <- cbind(data.all, dat$val)
+colnames(data.all)[length(data.all)] <- id
+
+write.csv(data.all, file="PathparseRaw.csv")

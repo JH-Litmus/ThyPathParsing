@@ -1,5 +1,4 @@
-dat <- data.frame(var=c("ID",
-                        "Pathology",
+dat <- data.frame(var=c("Pathology",
                         "Histologic subtype",
                         "Maximum diameter of tumor",
                         "Tumor involvement",
@@ -18,4 +17,4 @@ data.all <- dat
 
 data.all <- read.csv("PathParseRaw.csv", header=TRUE, sep=",",check.names=FALSE )
 
-data.all[,272] <- NULL
+data.all[,2] <- NULL
