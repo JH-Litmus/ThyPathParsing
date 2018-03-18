@@ -1,0 +1,25 @@
+6581952
+Thyroid gland, right lobe: PAPILLARY MICROCARCINOMA (corresponding aspiration: YC12-54104), see note.
+◇ Histologic subtype: Conventional 
+◇ Maximum diameter of tumor: 0.4cm
+◇ Tumor margin: Infiltrative
+◇ Tumor involvement: Intrathyroidal 
+◇ Psammomatous calcification: Present 
+◇ Associated benign lesion: Adenomatous hyperplasia 
+
+Lymph node, central (1/7): METASTATIC CARCINOMA in 1 out of 7 lymph nodes (maximal diameter: 500um) without perinodal soft tissue extension
+
+Note) An additional report will follow after immunohistochemistry.
+
+<Additional Report-1>
+The results of immunohistochemical stains;
+Ki67;  11/ HPF(max)
+p53: Negative in tumor cells
+  설명 Negative/1+/2+/3+(0/10%/30%/>30%) in 1HPF
+Thyroglobulin;  50% positivity in tumor area
+PPAR-r; Negative in tumor cell
+
+[Additional report-2]
+BRAF-sequencing analysis: Negative for BRAF V600E mutation
+( 상기 검사는 파라핀 조직에서 DNA를 추출한 후 direct sequencing으로 검사한 결과입니다.
+이 검사는 삼광의료재단에 수탁 의뢰한 결과입니다.)
